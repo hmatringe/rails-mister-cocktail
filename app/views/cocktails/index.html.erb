@@ -5,14 +5,10 @@
       <ul>
       <% @cocktails.each do |cocktail| %>
         <li>
-          <%= cocktail.name %><br>
-          First ingredient:<br>
-          <%= cocktail.doses.first.description %>
-          <%= cocktail.doses.first.ingredient.name %>
+          <%= link_to cocktail.name, cocktail %>
         </li>
       <% end %>
       </ul>
     </div>
   </div>
 </div>
-
