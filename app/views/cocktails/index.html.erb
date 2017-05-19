@@ -1,22 +1,30 @@
-<div class="container">
+<div class="container text-center">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-12">
       <h1>All the cocktails</h1>
       <div class="container">
         <div class="row">
           <% @cocktails.each do |cocktail| %>
-          <div class="col-xs-12 col-sm-3">
-            <%= link_to cocktail do %>
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
-                <div class="card-clickable-image">
-                  <%= image_tag "background" %>
-                </div>
-                <div class="card-description">
-                  <h2><%= cocktail.name %></h2>
-                </div>
+            <div class="col-xs-12 col-sm-3">
+              <%= link_to cocktail do %>
+
+              <% if cocktail.photo? %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path cocktail.photo.path, crop: :fill; %>');">
+              <% else %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "background" %>');">
+              <% end %>
+
+              <div class="card-clickable-image">
+                <%= image_tag "background" %>
+              </div>
+
+              <div class="card-description">
+                <h2><%= cocktail.name %></h2>
+              </div>
+
+              </div>
               <% end %>
             </div>
-          </div>
           <% end %>
         </div>
       </div>
